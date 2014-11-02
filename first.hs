@@ -1,5 +1,8 @@
 fact n = product[1..n]
 
+fac 1 = 1
+fac n = n * fac (n - 1)
+
 fib n = head (drop n res)
 	where res = 0 : 1 : zipWith (+) res (tail res)
 
@@ -8,26 +11,25 @@ f $$ x = f x
 
 flip' a b c = a c b
 
-gcd' a b = 
-	if (y == 0) then x else 
-	if (r == 0)
-		then y
-		else gcd' y (mod x y)
-	where
-	x = max (abs a) (abs b)
-	y = min (abs a) (abs b)
-	r = mod x y
+gcd' 0 a = a
+gcd' a 0 = a
+gcd' a b = gcd' b (mod a b)
 
 isPrime a = if a < 2 then False
 	else all (\x -> ((mod a x) /= 0)) [2..(div a 2)]
 
-{--
+listify num = 
+	if num < 10 then [num] else
+		(mod num 10) : (listify (div num 10))
+rev num = 
+	foldl (\ x y -> 10*x + y) 0  (listify num)
+
 sign a = if a > 0 then 1
 	else if a < 0 then -1
 		else 0
 
 f :: Double -> Double
-f x = x*x - 2*x + 1
+f x = x*x - 2*x 
 
 linear :: Double -> Double
 linear x = 3 * x - 17
@@ -37,15 +39,9 @@ root f a b eps =
 	if (abs (f point)) < eps then point
 		else if (sign (f a)) /= (sign (f point)) then
 			(root f a point eps)
-			else if (sign (f b)) /= (sign (f point)) then
-				(root f point b eps)
-				else if (abs (f firstSol)) < (abs (f secondSol)) then
-					firstSol else secondSol
-					where 
-					point = (a + b) / 2
-					firstSol = (root f a point eps)
-					secondSol = (root f point b eps)
---}
+			else (root f point b eps)
+	where point = (a + b) / 2
+
 
 myZip lst1 lst2 = 
 	if (null lst1) || (null lst2) then [] else
@@ -57,6 +53,7 @@ digitize num =
 
 numerify lst =
 	foldl (\x y -> (10 * x + y)) 0 lst
+
 
 ord [] lst = lst
 ord lst [] = lst
