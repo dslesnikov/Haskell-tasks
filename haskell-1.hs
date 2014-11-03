@@ -1,14 +1,9 @@
-square_eq a b c = 
+square_eq_root a b c = 
 	let disc = b * b - 4 * a * c
 	in
 		if disc < 0
 			then error "Square equation has no roots"
 			else (max ((-b + sqrt(disc)) / (2 * a)) ((-b - sqrt(disc)) / (2 * a)))
-
-
-sign a = if a > 0 then 1
-	else if a < 0 then -1
-		else 0
 
 f :: Double -> Double
 f x = x*x - 2*x 
@@ -22,4 +17,8 @@ root f a b eps =
 		else if (sign (f a)) /= (sign (f point)) then
 			(root f a point eps)
 			else (root f point b eps)
-	where point = (a + b) / 2
+	where
+		point = (a + b) / 2
+		sign a = if a > 0 then 1
+			else if a < 0 then -1
+				else 0
