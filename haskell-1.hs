@@ -1,9 +1,16 @@
-square_eq_root a b c = 
-	let disc = b * b - 4 * a * c
+square_eq_root_temp :: Integer -> Integer -> Integer -> Double
+square_eq_root_temp a b c = 
+	let 
+		newA = fromIntegral a
+		newB = fromIntegral b
+		newC = fromIntegral c
+		disc = newB * newB - 4 * newA * newC
 	in
 		if disc < 0
 			then error "Square equation has no roots"
-			else (max ((-b + sqrt(disc)) / (2 * a)) ((-b - sqrt(disc)) / (2 * a)))
+			else (max ((-newB + sqrt(disc)) / (2 * newA))
+						((-newB - sqrt(disc)) / (2 * newA)))
+
 
 f :: Double -> Double
 f x = x*x - 2*x 
