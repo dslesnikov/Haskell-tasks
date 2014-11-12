@@ -37,7 +37,7 @@ strangeCompare :: Integer -> Integer -> Ordering
 strangeCompare a b = compare (final  a) (final b)
 
 listify :: Integer -> [Integer]
-listify 0 = [0]
+listify 0 = []
 listify n = (listify (n `div` 10)) ++ [n `mod` 10]
 
 final :: Integer -> Integer
