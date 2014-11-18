@@ -13,7 +13,7 @@ leastN = floor $ head $ dropWhile (\x -> sin (x*x) < 0.9999) [1..]
 
 --		#5
 listifyAll :: Int -> [Int]
-listifyAll n = map digitToInt $ concatMap (\x -> show x) [1..n]
+listifyAll n = map digitToInt $ concatMap show [1..n]
 
 --		#6
 triangl :: [Int]
