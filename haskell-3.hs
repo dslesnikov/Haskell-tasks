@@ -23,7 +23,10 @@ triangles :: Int -> [Int]
 triangles n = take n triangl
 
 --		#7
-fact :: Integer -> Integer
-fact 0 = 1
-fact n = product [1..n]
---newton :: Int -> [Int]
+almNewton :: Int -> [Int]
+almNewton 0 = 1 : (repeat 0)
+almNewton n = zipWith (+) (0 : prev) prev
+	where
+		prev = almNewton (n-1)
+newton :: Int -> [Int]
+newton n = takeWhile (/= 0) (almNewton n)
