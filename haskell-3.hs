@@ -29,4 +29,4 @@ almNewton n = zipWith (+) (0 : prev) prev
 	where
 		prev = almNewton (n-1)
 newton :: Int -> [Int]
-newton n = takeWhile (/= 0) (almNewton n)
+newton = takeWhile (/= 0) . almNewton
