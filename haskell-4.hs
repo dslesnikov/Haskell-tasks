@@ -26,7 +26,7 @@ beats2 (Card rank1 suit1) (Card rank2 suit2) trump =
 			else True
 		else if suit2 == trump
 			then False
-			else rank1 > rank2
+			else rank1 > rank2 && suit1 == suit2
 
 beatsList :: [Card] -> Card -> Suit -> [Card]
 beatsList cardlist c1 trump = filter (\x -> beats2 x c1 trump) cardlist
