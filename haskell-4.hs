@@ -31,7 +31,6 @@ beats2 c1@(Card rank1 suit1) c2@(Card rank2 suit2) trump =
 beatsList :: [Card] -> Card -> Suit -> [Card]
 beatsList cardlist c1 trump = filter (\x -> beats2 x c1 trump) cardlist
 
-points1 :: Rank -> Int
 points1 Two = 2
 points1 Three = 3
 points1 Four = 4
